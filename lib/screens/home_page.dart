@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(255, 118, 7, 7),
         elevation: 4,
         shadowColor: const Color(0xFF162A49),
       ),

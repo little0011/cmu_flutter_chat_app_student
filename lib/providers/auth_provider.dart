@@ -69,6 +69,10 @@ class AuthProvider extends ChangeNotifier {
               .doc(firebaseUser.uid)
               .set({
             'id': firebaseUser.uid,
+            'chattingWith': null,
+            'displayName' : firebaseUser.displayName,
+            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            'photoUrl': firebaseUser.photoURL,
           }); // Add other logic for updating the FireStore data here
 
           User? currentUser = firebaseUser;

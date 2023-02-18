@@ -222,8 +222,63 @@ class _ChatListPageState extends State<ChatListPage> {
                                                                     .photoURL!,
                                                           )));
                                             },
-                                            child: Center(
-                                                child: Text('Index $index')),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20)),
+                                                  ),
+                                                  margin: EdgeInsets.all(10),
+                                                  child: Image.network(
+                                                    userChat.photoUrl,
+                                                    width: 40,
+                                                    height: 40,
+                                                    fit: BoxFit.cover,
+                                                    loadingBuilder: (BuildContext
+                                                            ctx,
+                                                        Widget child,
+                                                        ImageChunkEvent?
+                                                            loadingProgress) {
+                                                      if (loadingProgress ==
+                                                          null) return child;
+                                                      return Center(
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          color: AppColors
+                                                              .burgundy,
+                                                          value: loadingProgress
+                                                                          .expectedTotalBytes !=
+                                                                      null &&
+                                                                  loadingProgress
+                                                                          .expectedTotalBytes !=
+                                                                      null
+                                                              ? loadingProgress
+                                                                      .cumulativeBytesLoaded /
+                                                                  loadingProgress
+                                                                      .expectedTotalBytes!
+                                                              : null,
+                                                        ),
+                                                      );
+                                                    },
+                                                    errorBuilder: (context,
+                                                        object, stackTrace) {
+                                                      return const Icon(
+                                                        Icons.account_circle,
+                                                        size: 35,
+                                                        color:
+                                                            AppColors.greyColor,
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                Container(
+                                                    child: Text(
+                                                        userChat.displayName)),
+                                              ],
+                                            ),
                                           );
                                         });
                                   } else {
